@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {	cout << "Testing UiInDash" << endl;
-	UiInDash uiInDash;
+	UiInDash uiInDash(220, 220, "Testing UiInDash");
 	if(!uiInDash)
 	{	cout << "UiInDash failed, operator! == true" << endl;
 		return 1;

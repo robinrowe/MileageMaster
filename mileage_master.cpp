@@ -3,6 +3,8 @@
 // License MIT Open Source
 
 #include <iostream>
+#include <FL/Fl.H>
+#include <FL/Fl_Double_Window.H>
 #include "UiInDash.h"
 using namespace std;
 
@@ -24,7 +26,13 @@ int main(int argc,char* argv[])
 		return invalid_args;
 	}
 #endif
-	UiInDash uiInDash;
+	const int dx = 400;
+	const int dy = 420;
+	const char* caption = "Mileage Master";
+	Fl_Double_Window mainWindow(dx,dy,caption);
+	UiInDash uiInDash(dx,dy,caption);
+	mainWindow.resizable(mainWindow);
+	mainWindow.show();
 	return Fl::run();
 	cout << "mileage_master done!" << endl;
 	return ok;

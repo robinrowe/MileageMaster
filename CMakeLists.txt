@@ -16,7 +16,7 @@ if(NOT WIN32 AND NOT APPLE)
 	link_libraries(rt pthread)
 endif(NOT WIN32 AND NOT APPLE)
 
-option(UNISTD "Enable libunistd" false)
+option(UNISTD "Enable libunistd" OFF)
 if(UNISTD)
 	set(LIBUNISTD_PATH /code/libunistd)
 	if(WIN32)
@@ -26,11 +26,21 @@ if(UNISTD)
 	endif(WIN32)
 endif(UNISTD)
 
-option(FLTK "Enable FLTK" true)
+option(FLTK "Enable FLTK" ON)
 if(FLTK)
-	set(FLTK_DIR /Code/fltk)
+	set(FLTK_DIR /Code/fltk/fltk-src)
 	include_directories(${FLTK_DIR} ${FLTK_DIR}/build)
 	link_directories(${FLTK_DIR}/build/lib/Debug)
+	set(FLTK_LIBS
+		fltk_formsd
+		fltk_gld
+		fltk_imagesd
+		fltk_jpegd
+		fltk_pngd
+		fltk_zd
+		fltkd
+	)
+	link_libraries(${FLTK_LIBS} comctl32)
 endif(FLTK)
 
 add_executable(mileage_master mileage_master.cpp)
